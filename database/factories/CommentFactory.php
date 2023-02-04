@@ -3,22 +3,14 @@
 namespace Database\Factories;
 
 use App\Models\News;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Comment>
  */
-class NewsFactory extends Factory
+class CommentFactory extends Factory
 {
-
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
-    protected $model = News::class;
-
-
     /**
      * Define the model's default state.
      *
@@ -28,8 +20,9 @@ class NewsFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(),
-            'news' => $this->faker->text(),
-            'published_at' => $this->faker->time(),
+            'news_id' => News::factory(),
+            'user_id' => User::factory(),
+
         ];
     }
 }

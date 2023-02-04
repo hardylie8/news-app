@@ -6,11 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class News extends Model
+class Tag extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
 
     /**
      * The attributes that should be mutated to dates.
@@ -18,7 +17,6 @@ class News extends Model
      * @var string[]
      */
     protected $dates = [
-        'published_at',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -26,19 +24,10 @@ class News extends Model
 
 
     /**
-     * Get all of the tags for the post.
+     * Get all of the news for the post.
      */
-    public function tags()
+    public function news()
     {
-        return $this->belongsToMany(Tag::class, 'news_has_tags');
-    }
-
-
-    /**
-     * Get all of the new's comments.
-     */
-    public function comments()
-    {
-        return $this->morphMany(Comment::class, 'commentable');
+        return $this->belongsToMany(News::class, 'news_has_tags');
     }
 }

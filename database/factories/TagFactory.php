@@ -3,12 +3,13 @@
 namespace Database\Factories;
 
 use App\Models\News;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class NewsFactory extends Factory
+class TagFactory extends Factory
 {
 
     /**
@@ -16,7 +17,7 @@ class NewsFactory extends Factory
      *
      * @var string
      */
-    protected $model = News::class;
+    protected $model = Tag::class;
 
 
     /**
@@ -28,8 +29,7 @@ class NewsFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(),
-            'news' => $this->faker->text(),
-            'published_at' => $this->faker->time(),
+
         ];
     }
 }
