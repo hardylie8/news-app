@@ -28,6 +28,6 @@ class Tag extends Model
      */
     public function news()
     {
-        return $this->belongsToMany(News::class, 'news_has_tags');
+        return $this->belongsToMany(News::class, 'news_has_tags', 'tags_id', 'news_id');
     }
 }

@@ -3,12 +3,12 @@
 namespace App\QueryBuilders;
 
 use App\Http\Requests\NewsGetRequest;
-use App\Models\News;
+use App\Models\Tag;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 
-final class NewsBuilder extends Builder
+final class TagBuilder extends Builder
 {
     /**
      * Current HTTP Request object.
@@ -26,7 +26,7 @@ final class NewsBuilder extends Builder
     public function __construct(NewsGetRequest $request)
     {
         $this->request = $request;
-        $this->builder = QueryBuilder::for(News::class, $request);
+        $this->builder = QueryBuilder::for(Tag::class, $request);
     }
 
     /**
@@ -37,7 +37,7 @@ final class NewsBuilder extends Builder
     protected function getAllowedFields(): array
     {
         return [
-            'id', 'title', 'news'
+            'id', 'title'
         ];
     }
 
@@ -49,7 +49,7 @@ final class NewsBuilder extends Builder
     protected function getAllowedFilters(): array
     {
         return [
-            AllowedFilter::exact('id'), 'title', 'news', 'tags.title', 'tags.id'
+            AllowedFilter::exact('id'), 'title'
         ];
     }
 
@@ -61,7 +61,7 @@ final class NewsBuilder extends Builder
     protected function getAllowedIncludes(): array
     {
         return [
-            'tags', 'comments', 'comments.news', 'comments.users'
+            'news',
         ];
     }
     /**
@@ -71,7 +71,7 @@ final class NewsBuilder extends Builder
      */
     protected function getAllowedSearch(): array
     {
-        return ['title', 'news'];
+        return ['title'];
     }
 
     /**
@@ -81,7 +81,7 @@ final class NewsBuilder extends Builder
      */
     protected function getAllowedSorts(): array
     {
-        return ['id', 'title', 'news'];
+        return ['id', 'title'];
     }
 
     /**
@@ -91,7 +91,7 @@ final class NewsBuilder extends Builder
      */
     protected function allowedAppends(): array
     {
-        return ['comments.username'];
+        return [];
     }
 
 

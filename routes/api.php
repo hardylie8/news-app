@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\NewsController;
+use App\Http\Controllers\Api\TagsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::apiResource('news', NewsController::class)
+    ->only(['index', 'show']);
+Route::apiResource('tags', TagsController::class)
     ->only(['index', 'show']);
