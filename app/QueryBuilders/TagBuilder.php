@@ -20,7 +20,7 @@ final class TagBuilder extends Builder
 
 
     /**
-     * BrandBuilder constructor.
+     * TagBuilder constructor.
      *
      * @param NewsGetRequest $request
      */

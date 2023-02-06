@@ -25,6 +25,16 @@ class Comment extends Model
     ];
 
     /**
+     * the attribute that can be filled
+     * @var string[]
+     */
+    protected $fillable = [
+        'users_id',
+        'news_id',
+        'title'
+    ];
+
+    /**
      * Model relationship definition.
      * Comments belongs to news 
      *

@@ -21,7 +21,7 @@ final class CommentBuilder extends Builder
 
 
     /**
-     * BrandBuilder constructor.
+     * CommentBuilder constructor.
      *
      * @param NewsGetRequest $request
      */

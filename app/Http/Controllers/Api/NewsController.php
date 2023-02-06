@@ -18,7 +18,7 @@ class NewsController extends Controller
     protected static $requireAuthorization = false;
 
     /**
-     * BrandsController constructor.
+     * NewsController constructor.
      */
     public function __construct()
     {

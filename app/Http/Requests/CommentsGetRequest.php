@@ -30,7 +30,6 @@ class CommentsGetRequest extends FormRequest
             // 'news_id' => 'integer|exists:news,id',
             // 'users_id' => 'integer|exists:users,id',
             'filter.title' => 'string|min:2|max:255',
-            'name' => 'string|min:2|max:255',
             'title' => 'string|min:2|max:255',
             'page.number' => 'integer|min:1',
             'page.size' => 'integer|between:1,100',

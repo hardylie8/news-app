@@ -19,7 +19,7 @@ class TagsController extends Controller
     protected static $requireAuthorization = false;
 
     /**
-     * BrandsController constructor.
+     * TagsController constructor.
      */
     public function __construct()
     {

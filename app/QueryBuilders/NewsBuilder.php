@@ -19,7 +19,7 @@ final class NewsBuilder extends Builder
 
 
     /**
-     * BrandBuilder constructor.
+     * NewsBuilder constructor.
      *
      * @param NewsGetRequest $request
      */

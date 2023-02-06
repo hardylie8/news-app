@@ -26,5 +26,5 @@ Route::apiResource('news', NewsController::class)
     ->only(['index', 'show']);
 Route::apiResource('tags', TagsController::class)
     ->only(['index', 'show']);
-Route::apiResource('comments', CommentController::class)
-    ->only(['index', 'show']);
+Route::apiResource('comments', CommentController::class);
+    // ->only(['index', 'show', 'store']);
