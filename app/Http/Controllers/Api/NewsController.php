@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Resources\NewsCollection;
 use App\Http\Resources\NewsResource;
 use App\Models\News;
 use App\QueryBuilders\NewsBuilder;
-use Illuminate\Http\Request;
-use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\AllowedFilter;
+// use Illuminate\Http\Request;
+// use Spatie\QueryBuilder\QueryBuilder;
+// use Spatie\QueryBuilder\AllowedFilter;
 
 class NewsController extends Controller
 {
@@ -29,6 +30,12 @@ class NewsController extends Controller
         }
     }
 
+    /**
+     * function to show multiple record of news
+     * 
+     * @param NewsBuilder $query
+     * @return NewsCollection 
+     */
     public function index(NewsBuilder $query): NewsCollection
     {
         return (new NewsCollection($query->paginate()))
@@ -39,6 +46,13 @@ class NewsController extends Controller
                 ]
             );
     }
+
+    /**
+     * function to show single record of news
+     * 
+     * @param NewsBuilder $query
+     * @return NewsResource 
+     */
     public function show(NewsBuilder $query, News $news): NewsResource
     {
         return (new NewsResource($query->find($news->getKey())))->additional(

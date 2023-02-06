@@ -25,7 +25,10 @@ class Comment extends Model
     ];
 
     /**
-     * Get the parent Commentable model (user or news).
+     * Model relationship definition.
+     * Comments belongs to news 
+     *
+     * @return belongsTo
      */
     public function news()
     {
@@ -40,6 +43,10 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * get user name attribute 
+     * @return string|null 
+     */
     public function getUsernameAttribute()
     {
         $user = new User();

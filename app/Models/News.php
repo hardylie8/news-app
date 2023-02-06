@@ -27,6 +27,7 @@ class News extends Model
 
     /**
      * Get all of the tags for the post.
+     * @return belongsToMany
      */
     public function tags()
     {
@@ -36,6 +37,7 @@ class News extends Model
 
     /**
      * Get all of the new's comments.
+     * @return hasMany
      */
     public function comments()
     {
