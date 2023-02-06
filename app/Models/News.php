@@ -30,7 +30,7 @@ class News extends Model
      */
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'news_has_tags');
+        return $this->belongsToMany(Tag::class, 'news_has_tags', 'news_id', 'id');
     }
 
 
@@ -39,6 +39,6 @@ class News extends Model
      */
     public function comments()
     {
-        return $this->morphMany(Comment::class, 'commentable');
+        return $this->hasMany(Comment::class, 'news_id');
     }
 }

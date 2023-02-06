@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('users_id')->constrained('users');
             $table->foreignId('news_id')->constrained('news');
             $table->text('title')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
+            $table->softDeletes();
         });
     }
 

@@ -11,6 +11,8 @@ class Comment extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $appends = ['username'];
+
     /**
      * The attributes that should be mutated to dates.
      *
@@ -28,5 +30,19 @@ class Comment extends Model
     public function news()
     {
         return $this->belongsTo(News::class);
+    }
+
+    /**
+     * Get the parent Commentable model (user or news).
+     */
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function getUsernameAttribute()
+    {
+        $user = new User();
+        return $user->find($this['users_id'])->name ?? '';
     }
 }

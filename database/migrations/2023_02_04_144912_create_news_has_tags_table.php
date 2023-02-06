@@ -17,6 +17,8 @@ return new class extends Migration
             $table->increments('id')->unsigned();
             $table->foreignId('news_id')->constrained('news');
             $table->foreignId('tags_id')->constrained('tags');
+            $table->dateTime('created_at')->nullable();
+            $table->dateTime('updated_at')->nullable();
         });
     }
 

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('title')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
+            $table->softDeletes();
         });
     }
 

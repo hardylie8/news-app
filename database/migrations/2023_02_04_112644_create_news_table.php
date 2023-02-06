@@ -20,6 +20,7 @@ return new class extends Migration
             $table->dateTime('published_at')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
+            $table->softDeletes();
         });
     }
 
