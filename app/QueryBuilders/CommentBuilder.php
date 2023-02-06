@@ -2,14 +2,15 @@
 
 namespace App\QueryBuilders;
 
+use App\Http\Requests\CommentGetRequest;
+use App\Http\Requests\CommentsGetRequest;
 use App\Http\Requests\NewsGetRequest;
-use App\Http\Requests\TagGetRequest;
-use App\Models\Tag;
+use App\Models\Comment;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 
-final class TagBuilder extends Builder
+final class CommentBuilder extends Builder
 {
     /**
      * Current HTTP Request object.
@@ -24,10 +25,10 @@ final class TagBuilder extends Builder
      *
      * @param NewsGetRequest $request
      */
-    public function __construct(TagGetRequest $request)
+    public function __construct(CommentsGetRequest $request)
     {
         $this->request = $request;
-        $this->builder = QueryBuilder::for(Tag::class, $request);
+        $this->builder = QueryBuilder::for(Comment::class, $request);
     }
 
     /**
@@ -38,7 +39,7 @@ final class TagBuilder extends Builder
     protected function getAllowedFields(): array
     {
         return [
-            'id', 'title'
+            'id', 'title', 'users.name', 'news.title', 'news.id'
         ];
     }
 
@@ -50,7 +51,7 @@ final class TagBuilder extends Builder
     protected function getAllowedFilters(): array
     {
         return [
-            AllowedFilter::exact('id'), 'title'
+            AllowedFilter::exact('id'), 'title',  'users.name', 'news.title', 'news.id'
         ];
     }
 
@@ -62,7 +63,7 @@ final class TagBuilder extends Builder
     protected function getAllowedIncludes(): array
     {
         return [
-            'news',
+            'news', 'users', 'news.tags'
         ];
     }
     /**
@@ -82,7 +83,7 @@ final class TagBuilder extends Builder
      */
     protected function getAllowedSorts(): array
     {
-        return ['id', 'title'];
+        return ['id', 'title', 'users.name', 'title.name'];
     }
 
     /**
