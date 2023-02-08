@@ -38,6 +38,10 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
+            'provider' => 'admin',
+        ],
+        'api' => [
+            'driver'   => 'sanctum',
             'provider' => 'users',
         ],
     ],
@@ -60,11 +64,14 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'admin' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
-
+        'users' => [
+            'driver' => 'eloquent',
+            'model'  => App\Models\User::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -87,6 +94,7 @@ return [
     */
 
     'passwords' => [
+
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',

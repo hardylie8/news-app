@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\NewsController;
 use App\Http\Controllers\Api\TagsController;
 use App\Http\Controllers\Api\CommentController;
@@ -26,5 +27,12 @@ Route::apiResource('news', NewsController::class)
     ->only(['index', 'show']);
 Route::apiResource('tags', TagsController::class)
     ->only(['index', 'show']);
-Route::apiResource('comments', CommentController::class);
-    // ->only(['index', 'show', 'store']);
+Route::apiResource('comments', CommentController::class)
+    ->only(['index', 'show']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::resource('comments', CommentController::class)->except(['index', 'show']);
+});
+
+
+Route::prefix('api')
+    ->middleware('api')->post('/login', [LoginController::class, 'login']);

@@ -14,8 +14,11 @@ class CommentSaveRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
-        //        return (auth()->guard('api')->check() || auth()->guard('cms-api')->check());
+        $object = $this->route('comment');
+        if ($object) {
+            return (auth()->guard('api')->user()->id == $object->users_id);
+        } else
+            return (auth()->guard('api')->check());
     }
 
     /**
@@ -25,7 +28,7 @@ class CommentSaveRequest extends FormRequest
      */
     protected function prepareForValidation(): void
     {
-        $user_id = 1;
+        $user_id = auth()->guard('api')->user()->id;
         $object = $this->route('comment');
         if ($object instanceof Comment)
             $this->merge([
