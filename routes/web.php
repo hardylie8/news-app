@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Livewire\News\CreateNews;
+use App\Http\Livewire\News\EditNews;
+use App\Http\Livewire\News\NewsIndex;
+use App\Http\Livewire\News\ShowNews;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +22,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/news', NewsIndex::class)->name('web.news.index');
+Route::get('/news/create', CreateNews::class)->name('web.news.create');
+Route::get('/news/{news}', ShowNews::class);
+Route::get('/news/{news}/edit', EditNews::class)->name('web.news.edit');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -28,4 +38,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

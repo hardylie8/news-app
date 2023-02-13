@@ -43,4 +43,24 @@ class News extends Model
     {
         return $this->hasMany(Comment::class, 'news_id');
     }
+
+
+    /**
+     * get user name attribute 
+     * @return string|null 
+     */
+    public function getTagNamesAttribute()
+    {
+        return ($this->tags()->pluck('title')->toArray());
+    }
+
+
+    /**
+     * get published status attribute 
+     * @return string|null 
+     */
+    public function getPublishedAttribute()
+    {
+        return (is_null($this->published_at) ? 'unpublished' : 'published');
+    }
 }

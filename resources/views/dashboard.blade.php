@@ -1,17 +1,22 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+<div>
+    <x-layout bodyClass="g-sidenav-show  bg-gray-200">
+        <x-navbars.sidebar activePage="user-management"></x-navbars.sidebar>
+        <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+            <x-navbars.navs.auth titlePage='Dashboard'></x-navbars.navs.auth>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
+
+            <div class="container-fluid px-2 px-md-4 py-4">
+                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                    <h6 class="text-white mx-3">
+                        <strong>
+                            Dashboard
+                        </strong>
+                    </h6>
                 </div>
             </div>
-        </div>
-    </div>
-</x-app-layout>
+            {{-- <x-footers.auth></x-footers.auth> --}}
+
+        </main>
+
+    </x-layout>
+</div>
