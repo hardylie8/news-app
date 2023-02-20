@@ -1,47 +1,42 @@
 <?php
 
-namespace App\Http\Livewire\News;
+namespace App\Http\Livewire\Tags;
 
-use App\Models\News;
 use Livewire\Component;
-use Alert;
 use App\Http\Livewire\Concerns\DeleteRecord;
 use App\Http\Livewire\Concerns\SwalTrigger;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Builder;
 
-abstract class NewsForm extends Component
+abstract class TagForm extends Component
 {
 
     use SwalTrigger, DeleteRecord;
 
-    public News $news;
+    public Tag $tag;
 
     public $published = false;
 
     protected $rules = [
-        'news.title' => 'required|string|min:6',
-        'news.news' => 'required|string|max:500',
-        'published' => 'required|bool',
-        'tagsValues.*' => 'exists:tags,id'
+        'tag.title' => 'required|string|min:6',
     ];
 
     public function render()
     {
-        return view('livewire.news.show-news');
+        return view('livewire.tag.show-tag');
     }
 
     public function backToIndex()
     {
-        return  redirect()->to(route('web.news.index'));
+        return  redirect()->to(route('web.tag.index'));
     }
 
     public function save()
     {
         $this->validate();
-        $this->news->published_at = $this->published ? now() : null;
-        $this->news->save();
 
-        $this->news->tags()->sync($this->tagsValues);
+        $this->tag->save();
+
 
         $this->DispactchSwal(
             'swal',
@@ -63,7 +58,7 @@ abstract class NewsForm extends Component
      */
     protected function newQuery(): builder
     {
-        return (new News())->newQuery();
+        return (new Tag())->newQuery();
     }
 
     /**
@@ -74,7 +69,7 @@ abstract class NewsForm extends Component
     public function edit()
     {
         return redirect()->to(
-            route('web.news.edit', ['news' => $this->news])
+            route('web.tag.edit', ['tag' => $this->tag])
         );
     }
 }

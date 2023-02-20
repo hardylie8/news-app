@@ -1,33 +1,33 @@
 <?php
 
-namespace App\Http\Livewire\News;
+namespace App\Http\Livewire\Tags;
 
 use App\Http\Livewire\Concerns\Column;
-use App\Models\News;
 use Illuminate\Database\Eloquent\Builder;
 use App\Http\Livewire\BaseComponent;
 use App\Http\Livewire\Concerns\SwalTrigger;
+use App\Models\Tag;
 
-class NewsIndex extends BaseComponent
+class TagIndex extends BaseComponent
 {
     use SwalTrigger;
 
     public function render()
     {
-        return view('livewire.news.news-index');
+        return view('livewire.tag.tag-index');
     }
 
     public function query(): Builder
     {
-        return (News::query());
+        return (Tag::query());
     }
 
     public function columns(): array
     {
         return [
             Column::make('title', 'title'),
-            Column::make('published_at', 'Publish Status')->component('cms.published'),
-            Column::make('tagnames', 'Tag Names')->component('cms.tags')->notSortable(),
+            Column::make('created_at', 'Created At'),
+            Column::make('updated_at', 'Updated At'),
         ];
     }
 
@@ -44,7 +44,7 @@ class NewsIndex extends BaseComponent
             'swal',
             [
                 'title' => 'Success',
-                'text'  => 'News deleted successfully!',
+                'text'  => 'Tag deleted successfully!',
                 'icon'  => 'success'
             ]
         );
@@ -53,7 +53,7 @@ class NewsIndex extends BaseComponent
     public function create()
     {
         return redirect()->to(
-            route('web.news.create')
+            route('web.tag.create')
         );
     }
 }

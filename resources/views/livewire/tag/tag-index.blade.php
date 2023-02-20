@@ -1,8 +1,8 @@
 <div>
     <x-layout bodyClass="g-sidenav-show  bg-gray-200">
-        <x-navbars.sidebar activePage="news"></x-navbars.sidebar>
+        <x-navbars.sidebar activePage="tag"></x-navbars.sidebar>
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-            <x-navbars.navs.auth titlePage='News'></x-navbars.navs.auth>
+            <x-navbars.navs.auth titlePage='Tag'></x-navbars.navs.auth>
 
 
             <div class="container-fluid px-2 px-md-4 py-4">
@@ -11,7 +11,7 @@
                         <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                             <h6 class="text-white mx-3">
                                 <strong>
-                                    News
+                                    Tag
                                 </strong>
                             </h6>
                         </div>
@@ -19,7 +19,7 @@
                     <div class=" me-3 my-3 text-end">
                         <a class="btn bg-gradient-dark mb-0" wire:click="create()"><i
                                 class="material-icons text-sm">add</i>&nbsp;&nbsp;
-                            Add New News</a>
+                            Add New Tag</a>
                     </div>
                     <div class="card-body px-0 pb-2">
                         <div class="d-flex justify-content-end mb-3 ">
@@ -99,20 +99,17 @@
                                             @endforeach
                                             <td class="align-middle">
                                                 <a rel="tooltip" class="btn btn-icon p-2 btn-info btn-link"
-                                                    href="/news/{{ $row->id }}" data-original-title=""
-                                                    title="">
+                                                    href="/tag/{{ $row->id }}">
                                                     <i class="material-icons">visibility</i>
                                                 </a>
                                                 <a rel="tooltip" class="btn btn-icon p-2 btn-success btn-link"
-                                                    href="/news/{{ $row->id }}/edit" data-original-title=""
-                                                    title="">
+                                                    href="/tag/{{ $row->id }}/edit">
                                                     <i class="material-icons">edit</i>
                                                 </a>
 
                                                 <button type="button"
                                                     class="btn p-2 btn-icon btn-danger dt-delete btn-link"
-                                                    data-original-title="" data-key="{{ $row->getKey() }}"
-                                                    title="">
+                                                    data-key="{{ $row->getKey() }}">
                                                     <i class="material-icons">delete</i>
                                                 </button>
                                             </td>

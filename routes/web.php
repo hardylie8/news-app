@@ -5,6 +5,10 @@ use App\Http\Livewire\News\CreateNews;
 use App\Http\Livewire\News\EditNews;
 use App\Http\Livewire\News\NewsIndex;
 use App\Http\Livewire\News\ShowNews;
+use App\Http\Livewire\Tags\CreateTag;
+use App\Http\Livewire\Tags\EditTag;
+use App\Http\Livewire\Tags\ShowTag;
+use App\Http\Livewire\Tags\TagIndex;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +31,11 @@ Route::get('/news', NewsIndex::class)->name('web.news.index');
 Route::get('/news/create', CreateNews::class)->name('web.news.create');
 Route::get('/news/{news}', ShowNews::class);
 Route::get('/news/{news}/edit', EditNews::class)->name('web.news.edit');
+
+Route::get('/tag', TagIndex::class)->name('web.tag.index');
+Route::get('/tag/create', CreateTag::class)->name('web.tag.create');
+Route::get('/tag/{tag}', ShowTag::class)->name('web.tag.show');
+Route::get('/tag/{tag}/edit', EditTag::class)->name('web.tag.edit');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

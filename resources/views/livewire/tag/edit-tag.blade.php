@@ -1,17 +1,15 @@
 <div>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
     <x-layout bodyClass="g-sidenav-show  bg-gray-200">
-        <x-navbars.sidebar activePage="news"></x-navbars.sidebar>
+        <x-navbars.sidebar activePage="tag"></x-navbars.sidebar>
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-md ">
-            <x-navbars.navs.auth titlePage='News/Show News'></x-navbars.navs.auth>
+            <x-navbars.navs.auth titlePage='Tag/Edit Tag'></x-navbars.navs.auth>
             <div class="container-fluid px-2 px-md-4 py-4">
                 <div class="card  my-4">
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                         <div class="bg-gradient-primary shadow-primary border-radius-md pt-4 pb-3">
                             <h6 class="text-white mx-3">
                                 <strong>
-                                    News
+                                    Tag
                                 </strong>
                             </h6>
                         </div>
@@ -23,72 +21,36 @@
                             </a>
                         </div>
                         <div class="col text-end">
-                            <a class="btn bg-gradient-danger dt-delete mb-0" data-key="{{ $news->id }}"><i
+                            <a class="btn bg-gradient-danger dt-delete mb-0" data-key="{{ $tag->id }}"><i
                                     class="material-icons text-sm">delete</i>&nbsp;&nbsp;
-                                Delete News</a>
+                                Delete Tag</a>
                         </div>
-
                     </div>
                     <div class="card-body px-3 pb-2">
+                        <div class="row my-3">
+                            <div class="col-3">
+                                <label class="text-md">id</label>
+                            </div>
+                            <div class="col-9">
+                                <div class="input-group   input-group-outline ">
+                                    <input type="number" class="form-control " placeholder="{{ $tag->id }}"
+                                        disabled>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row my-3">
                             <div class="col-3">
                                 <label class="text-md">Title</label>
                             </div>
                             <div class="col-9">
                                 <div class="input-group   input-group-outline ">
-                                    <input type="text" class="form-control " wire:model="news.title">
-                                    @error('news.title')
-                                        <span class="error">{{ $message }}</span>
-                                    @enderror
+                                    <input type="text" class="form-control " wire:model="tag.title">
                                 </div>
                             </div>
                         </div>
-                        <div class="row my-3">
-                            <div class="col-3">
-                                <label class="text-md">News</label>
-                            </div>
-                            <div class="col-9">
-                                <livewire:concerns.trix :value="$news->news">
-                                    @error('news.news')
-                                        <span class="error">{{ $message }}</span>
-                                    @enderror
-                            </div>
-                        </div>
-                        <div class="row my-3">
-                            <div class="col-3">
-                                <label class="text-md">Tags</label>
-                            </div>
-                            <div class="col-9">
-                                <div wire:ignore>
-                                    <select class="form-control" id="select2-dropdown" multiple>
-                                        <option value="">Select Option</option>
 
-                                        @foreach ($this->tags as $key => $item)
-                                            <option value="{{ $key }}"
-                                                {{ isset($this->tagsValues[$key]) ? 'selected' : '' }}>
-                                                {{ $item }}</option>
-                                        @endforeach
-                                        @error('tagsValues')
-                                            <span class="error">{{ $message }}</span>
-                                        @enderror
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row my-3">
-                            <div class="col-3">
-                                <label class="text-md">Publish Status</label>
-                            </div>
-                            <div class="col-9">
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch"
-                                        id="flexSwitchCheckDefault" wire:model="published">
-                                    @error('published')
-                                        <span class="error">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
+
+
                         <div class="row">
                             <div class="col-3"></div>
                             <div class="col-9">
@@ -106,19 +68,7 @@
     </x-layout>
 
     @push('scripts')
-        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
         <script>
-            $(document).ready(function() {
-                $('#select2-dropdown').select2();
-
-                $('#select2-dropdown').on('change', function(e) {
-                    var data = $('#select2-dropdown').select2("val");
-                    @this.set('tagsValues', data);
-                });
-            });
-
-
             window.addEventListener('swal', function(e) {
                 Swal.fire(e.detail);
             });

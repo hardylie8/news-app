@@ -1,8 +1,8 @@
 <div>
     <x-layout bodyClass="g-sidenav-show  bg-gray-200">
-        <x-navbars.sidebar activePage="news"></x-navbars.sidebar>
+        <x-navbars.sidebar activePage="tag"></x-navbars.sidebar>
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-md ">
-            <x-navbars.navs.auth titlePage='News/Show News'></x-navbars.navs.auth>
+            <x-navbars.navs.auth titlePage='Tag/Show Tag'></x-navbars.navs.auth>
 
 
             <div class="container-fluid px-2 px-md-4 py-4">
@@ -11,7 +11,7 @@
                         <div class="bg-gradient-primary shadow-primary border-radius-md pt-4 pb-3">
                             <h6 class="text-white mx-3">
                                 <strong>
-                                    News
+                                    Tag
                                 </strong>
                             </h6>
                         </div>
@@ -25,11 +25,11 @@
                         <div class="col text-end">
                             <a class="btn bg-gradient-success mb-0" wire:click="edit()"><i
                                     class="material-icons text-sm">edit</i>&nbsp;&nbsp;
-                                Edit News</a>
+                                Edit Tag</a>
 
-                            <a class="btn bg-gradient-danger dt-delete mb-0" data-key="{{ $news->id }}"><i
+                            <a class="btn bg-gradient-danger dt-delete mb-0" data-key="{{ $tag->id }}"><i
                                     class="material-icons text-sm">delete</i>&nbsp;&nbsp;
-                                Delete News</a>
+                                Delete Tag</a>
 
                         </div>
 
@@ -40,7 +40,7 @@
                                 <label class="text-md">id</label>
                             </div>
                             <div class="col-9">
-                                <label class="text-md">{{ $this->news->id }}</label>
+                                <label class="text-md">{{ $this->tag->id }}</label>
                             </div>
                         </div>
                         <div class="row">
@@ -48,15 +48,7 @@
                                 <label class="text-md">Title</label>
                             </div>
                             <div class="col-9">
-                                <label class="text-md">{{ $this->news->title }}</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">
-                                <label class="text-md">News</label>
-                            </div>
-                            <div class="col-9">
-                                <label class="text-md">{{ $this->news->news }}</label>
+                                <label class="text-md">{{ $this->tag->title }}</label>
                             </div>
                         </div>
                         <div class="row">
@@ -64,29 +56,16 @@
                                 <label class="text-md">Created At</label>
                             </div>
                             <div class="col-9">
-                                <label class="text-md">{{ $this->news->created_at }}</label>
+                                <label class="text-md">{{ $this->tag->created_at }}</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-3">
-                                <label class="text-md">Tags</label>
+                                <label class="text-md">Updated At</label>
                             </div>
                             <div class="col-9">
-                                <label class="text-md">
-                                    @foreach ($this->news->tag_names as $items)
-                                        <span class="badge bg-gradient-primary"> {{ $items }}</span>
-                                    @endforeach
-                                </label>
+                                <label class="text-md">{{ $this->tag->updated_at }}</label>
                             </div>
-                            <div class="row">
-                                <div class="col-3">
-                                    <label class="text-md">Published At</label>
-                                </div>
-                                <div class="col-9">
-                                    <label class="text-md">{{ $this->news->published }}</label>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </div>

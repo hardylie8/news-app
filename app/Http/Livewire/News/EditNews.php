@@ -22,7 +22,6 @@ class EditNews extends NewsForm
         $this->news->news = $value;
     }
 
-
     public function render()
     {
         return view('livewire.news.edit-news');

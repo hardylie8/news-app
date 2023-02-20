@@ -2,7 +2,7 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <x-layout bodyClass="g-sidenav-show  bg-gray-200">
-        <x-navbars.sidebar activePage="user-management"></x-navbars.sidebar>
+        <x-navbars.sidebar activePage="news"></x-navbars.sidebar>
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-md ">
             <x-navbars.navs.auth titlePage='News/Show News'></x-navbars.navs.auth>
             <div class="container-fluid px-2 px-md-4 py-4">

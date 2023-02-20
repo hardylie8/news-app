@@ -33,6 +33,5 @@ class CreateNews extends NewsForm
     {
         $this->news = new News();
         $this->tags = Tag::get()->pluck('title', 'id',);
-        // $this->tagsValues = $this->news->tags->pluck('id', 'id')->toArray();
     }
 }
