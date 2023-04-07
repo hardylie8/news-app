@@ -52,9 +52,9 @@ class TagsController extends Controller
      * @param TagBuilder $query
      * @return TagResource 
      */
-    public function show(TagBuilder $query, Tag $news): TagResource
+    public function show(TagBuilder $query, Tag $tag): TagResource
     {
-        return (new TagResource($query->find($news->getKey())))->additional(
+        return (new TagResource($query->find($tag->getKey())))->additional(
             [
                 'status' => 200,
                 'message' => 'Data Has been successfully retrieved'

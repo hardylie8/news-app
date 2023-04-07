@@ -1,0 +1,9 @@
+### News EndPoint
+@baseUrl = HTTP://localhost:8000/api
+
+GET  {{baseUrl}}/news?sort=title&include=comments&append=comments.username&page[size]=4
+Accept: : application/json
+
+###
+GET  {{baseUrl}}/tags
+Accept: : application/json

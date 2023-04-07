@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\User;
+use App\Models\Admin;
 
 test('profile page is displayed', function () {
-    $user = User::factory()->create();
+    $user = Admin::factory()->create();
 
     $response = $this
         ->actingAs($user)
@@ -13,12 +13,12 @@ test('profile page is displayed', function () {
 });
 
 test('profile information can be updated', function () {
-    $user = User::factory()->create();
+    $user = Admin::factory()->create();
 
     $response = $this
         ->actingAs($user)
         ->patch('/profile', [
-            'name' => 'Test User',
+            'name' => 'Test Admin',
             'email' => 'test@example.com',
         ]);
 
@@ -28,18 +28,18 @@ test('profile information can be updated', function () {
 
     $user->refresh();
 
-    $this->assertSame('Test User', $user->name);
+    $this->assertSame('Test Admin', $user->name);
     $this->assertSame('test@example.com', $user->email);
     $this->assertNull($user->email_verified_at);
 });
 
 test('email verification status is unchanged when the email address is unchanged', function () {
-    $user = User::factory()->create();
+    $user = Admin::factory()->create();
 
     $response = $this
         ->actingAs($user)
         ->patch('/profile', [
-            'name' => 'Test User',
+            'name' => 'Test Admin',
             'email' => $user->email,
         ]);
 
@@ -51,10 +51,10 @@ test('email verification status is unchanged when the email address is unchanged
 });
 
 test('user can delete their account', function () {
-    $user = User::factory()->create();
+    $user = Admin::factory()->create();
 
     $response = $this
-        ->actingAs($user)
+        ->actingAs($user,'web')
         ->delete('/profile', [
             'password' => 'password',
         ]);
@@ -68,15 +68,14 @@ test('user can delete their account', function () {
 });
 
 test('correct password must be provided to delete account', function () {
-    $user = User::factory()->create();
+    $user = Admin::factory()->create();
 
     $response = $this
-        ->actingAs($user)
+        ->actingAs($user,'web')
         ->from('/profile')
         ->delete('/profile', [
             'password' => 'wrong-password',
         ]);
-
     $response
         ->assertSessionHasErrorsIn('userDeletion', 'password')
         ->assertRedirect('/profile');

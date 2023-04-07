@@ -88,8 +88,10 @@
                             </div>
 
                         </div>
+
                     </div>
                 </div>
+                @livewire('comment.comment-index', ['newsId' => $this->news->id])
                 <x-footers.auth></x-footers.auth>
 
         </main>

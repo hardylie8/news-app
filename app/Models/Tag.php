@@ -22,12 +22,11 @@ class Tag extends Model
         'deleted_at',
     ];
 
-
     /**
      * Get all of the news for the post.
      */
-    public function news()
-    {
-        return $this->belongsToMany(News::class, 'news_has_tags', 'tags_id', 'news_id');
-    }
+    // public function news()
+    // {
+    //     return $this->belongsToMany(News::class, 'news_has_tags', 'tags_id', 'news_id');
+    // }
 }

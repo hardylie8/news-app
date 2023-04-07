@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -29,7 +29,7 @@ Route::apiResource('tags', TagsController::class)
     ->only(['index', 'show']);
 Route::apiResource('comments', CommentController::class)
     ->only(['index', 'show']);
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:api')->group(function () {
     Route::resource('comments', CommentController::class)->except(['index', 'show']);
 });
 

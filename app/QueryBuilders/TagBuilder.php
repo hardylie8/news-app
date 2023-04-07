@@ -22,7 +22,7 @@ final class TagBuilder extends Builder
     /**
      * TagBuilder constructor.
      *
-     * @param NewsGetRequest $request
+     * @param TagGetRequest $request
      */
     public function __construct(TagGetRequest $request)
     {

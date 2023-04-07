@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2a6d8b2e87891683ea4f592fdb27d26b",
+    "content-hash": "721c7d703510248294b876b70d5ce8c3",
     "packages": [
         {
             "name": "brick/math",
@@ -3265,16 +3265,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.0",
+            "version": "9.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "70fc8be1d0b9fad56a199a4df5f9cfabfc246f84"
+                "reference": "b65d59a059d3004a040c16a82e07bbdf6cfdd115"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/70fc8be1d0b9fad56a199a4df5f9cfabfc246f84",
-                "reference": "70fc8be1d0b9fad56a199a4df5f9cfabfc246f84",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b65d59a059d3004a040c16a82e07bbdf6cfdd115",
+                "reference": "b65d59a059d3004a040c16a82e07bbdf6cfdd115",
                 "shasum": ""
             },
             "require": {
@@ -3307,8 +3307,8 @@
                 "sebastian/version": "^3.0.2"
             },
             "suggest": {
-                "ext-soap": "*",
-                "ext-xdebug": "*"
+                "ext-soap": "To be able to generate mocks based on WSDL files",
+                "ext-xdebug": "PHP extension that provides line coverage as well as branch and path coverage"
             },
             "bin": [
                 "phpunit"
@@ -3347,7 +3347,8 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.0"
+                "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.6"
             },
             "funding": [
                 {
@@ -3363,7 +3364,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-03T07:32:24+00:00"
+            "time": "2023-03-27T11:43:46+00:00"
         },
         {
             "name": "psr/container",
@@ -8535,5 +8536,5 @@
         "php": "^8.0.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
