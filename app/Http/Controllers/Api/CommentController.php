@@ -80,7 +80,7 @@ class CommentController extends Controller
     {
         $comment->fill($request->only($comment->offsetGet('fillable')))
             ->save();
-
+        
         $resource = (new CommentsResource($comment))
             ->additional(
                 [

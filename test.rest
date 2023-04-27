@@ -5,5 +5,24 @@ GET  {{baseUrl}}/news?sort=title&include=comments&append=comments.username&page[
 Accept: : application/json
 
 ###
-GET  {{baseUrl}}/tags
+POST  HTTP://localhost:8000/api/api/login
 Accept: : application/json
+Content-Type: application/json
+
+{
+    "email" : "keon.gleichner@example.com",
+    "password" : "password"
+}
+
+
+###
+POST  {{baseUrl}}/comments
+Authorization : Bearer 3|xrpDlpfA0Ef3sO0Ss7gvGsFN60TgK6OQYq02HaA0
+Accept:  application/json
+
+
+{
+    "title" : "Samsung S25 fafef",
+    "news_id"  : 4,
+    "user_id" : 6
+}

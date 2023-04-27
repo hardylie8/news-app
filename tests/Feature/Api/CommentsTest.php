@@ -101,4 +101,42 @@ class CommentsTest extends TestCase
             ->assertStatus(201)
             ->assertJsonFragment($seenData);
     }
+
+    /** @test */
+    public function update_endpoint_works_as_expected()
+    {
+        // Submitted data
+        $data = Comment::factory([
+            "news_id" => $this->model->news_id,
+            "users_id"=> $this->model->users_id,
+        ])->raw();
+        // The data which should be shown
+        $seenData = $data;
+        $this->patchJson($this->endpoint.$this->model->getKey(), $data)
+            ->assertStatus(200)
+            ->assertJsonFragment($seenData);
+    }
+
+    /** @test */
+    public function delete_endpoint_works_as_expected()
+    {
+        $this->deleteJson($this->endpoint.$this->model->getKey())
+            ->assertStatus(200)
+            ->assertJsonFragment([
+                'message' => 'Success',
+            ]);
+
+        $this->assertDatabaseHas('comments', [
+            "news_id" => (string)$this->model->news_id,
+            "users_id"=>(string) $this->model->users_id,
+            "title"=> $this->model->title,
+        ]);
+
+        $this->assertDatabaseMissing('comments', [
+            "news_id" =>(string) $this->model->news_id,
+            "users_id"=> (string)$this->model->users_id,
+            "title"=> $this->model->title,
+            'deleted_at' => null,
+        ]);
+    }
 }
