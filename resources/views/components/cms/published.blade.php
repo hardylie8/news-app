@@ -6,8 +6,9 @@
     'bg-gradient-success' => !is_null($value),
 ])>
     @if (is_null($value))
-        unpublished
+        {{__("common.unpublished")}}
     @else
-        published
+    {{__("common.published")}}
+
     @endif
 </span>

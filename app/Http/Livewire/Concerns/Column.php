@@ -14,6 +14,7 @@ class Column
 
     public function __construct($key, $label)
     {
+        $this->sortable = true;
         $this->key = $key;
         $this->label = $label;
     }
@@ -28,7 +29,6 @@ class Column
         $this->component = $component;
         return $this;
     }
-
 
     public function notSortable()
     {

@@ -2,7 +2,7 @@
     <x-layout bodyClass="g-sidenav-show  bg-gray-200">
         <x-navbars.sidebar activePage="news"></x-navbars.sidebar>
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-            <x-navbars.navs.auth titlePage='News'></x-navbars.navs.auth>
+            <x-navbars.navs.auth titlePage="News"></x-navbars.navs.auth>
 
 
             <div class="container-fluid px-2 px-md-4 py-4">
@@ -11,7 +11,7 @@
                         <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                             <h6 class="text-white mx-3">
                                 <strong>
-                                    News
+                                    {{__('common.News')}}
                                 </strong>
                             </h6>
                         </div>
@@ -19,14 +19,15 @@
                     <div class=" me-3 my-3 text-end">
                         <a class="btn bg-gradient-dark mb-0" wire:click="create()"><i
                                 class="material-icons text-sm">add</i>&nbsp;&nbsp;
-                            Add New News</a>
+                                {{__("common.addNew" , ["name" => __('common.News')])}}
+                          </a>
                     </div>
                     <div class="card-body px-0 pb-2">
                         <div class="d-flex justify-content-end mb-3 ">
                             <div class="col-lg-3 col-md-6">
                                 <div class="row ">
-                                    <div class="input-group  col  align-self-center input-group-outline ">
-                                        <label class="my-auto me-2" for="basic-url">search :</label>
+                                    <div class="input-group  col me-2 align-self-center input-group-outline ">
+                                        <label class="my-auto me-2" for="basic-url">   {{__('common.search')}} :</label>
                                         <input type="text" class="form-control " type="text"
                                             wire:model.debounce.700ms="search">
                                     </div>
@@ -69,14 +70,14 @@
                                             @else
                                                 <th
                                                     class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ">
-                                                    {{ $column->key }}
+                                                    {{ $column->label }}
                                                 </th>
                                             @endif
 
                                         @endforeach
                                         <th
                                             class="text-uppercase text-secondary text-sm text-center font-weight-bolder opacity-7">
-                                            Action
+                                            {{__("common.action")}}
                                         </th>
                                     </tr>
                                 </thead>
@@ -134,13 +135,13 @@
                     $('.dt-delete').click(function(event) {
                         Swal.fire({
                             icon: 'warning',
-                            title: 'Delete',
-                            text: 'are you sure you want to delete this item ??',
+                            title: `{{__("common.delete" ,  ['name' => __("common.News")])}}`,
+                            text: `{{__("common.areYouSure")}}`,
                             showDenyButton: true,
                             confirmButtonColor: '#d9534f',
                             denyButtonColor: '#5bc0de',
-                            confirmButtonText: 'Yes, delete it!',
-                            denyButtonText: ` <span class="text-light">No, Cancel.</span>`,
+                            confirmButtonText: `{{__("common.yesDelete")}}`,
+                            denyButtonText: ` <span class="text-light">{{__("common.noCancel")}}</span>`,
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 let key = $(this).attr('data-key');

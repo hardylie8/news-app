@@ -4,14 +4,14 @@
     <x-layout bodyClass="g-sidenav-show  bg-gray-200">
         <x-navbars.sidebar activePage="news"></x-navbars.sidebar>
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-md ">
-            <x-navbars.navs.auth titlePage='News/Show News'></x-navbars.navs.auth>
+            <x-navbars.navs.auth titlePage='News' pageType="add"></x-navbars.navs.auth>
             <div class="container-fluid px-2 px-md-4 py-4">
                 <div class="card  my-4">
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                         <div class="bg-gradient-primary shadow-primary border-radius-md pt-4 pb-3">
                             <h6 class="text-white mx-3">
                                 <strong>
-                                    News
+                                    {{__("common.News")}}
                                 </strong>
                             </h6>
                         </div>
@@ -28,7 +28,7 @@
                         <div class="card-body px-3 pb-2">
                             <div class="row my-3">
                                 <div class="col-3">
-                                    <label class="text-md">Title</label>
+                                    <label class="text-md"> {{__("common.title")}} </label>
                                 </div>
                                 <div class="col-9">
                                     <div class="input-group   input-group-outline ">
@@ -41,7 +41,7 @@
                             </div>
                             <div class="row my-3">
                                 <div class="col-3">
-                                    <label class="text-md">News</label>
+                                    <label class="text-md">{{__("common.News")}}</label>
                                 </div>
                                 <div class="col-9">
                                     <livewire:concerns.trix :value="''">
@@ -52,12 +52,12 @@
                             </div>
                             <div class="row my-3">
                                 <div class="col-3">
-                                    <label class="text-md">Tags</label>
+                                    <label class="text-md">{{__("common.Tags")}}</label>
                                 </div>
                                 <div class="col-9">
                                     <div wire:ignore>
                                         <select class="form-control" id="select2-dropdown" multiple>
-                                            <option value="">Select Option</option>
+                                            {{-- <option value="">Select Option</option> --}}
 
                                             @foreach ($this->tags as $key => $item)
                                                 <option value="{{ $key }}">
@@ -72,7 +72,7 @@
                             </div>
                             <div class="row my-3">
                                 <div class="col-3">
-                                    <label class="text-md">Publish Status</label>
+                                    <label class="text-md">{{__("common.publishStatus")}}</label>
                                 </div>
                                 <div class="col-9">
                                     <div class="form-check form-switch">
@@ -88,7 +88,7 @@
                                 <div class="col-3"></div>
                                 <div class="col-9">
                                     <button type="button" class="btn btn-primary" wire:click="save()">
-                                        save
+                                        {{__("common.save")}}
                                     </button>
                                 </div>
                             </div>

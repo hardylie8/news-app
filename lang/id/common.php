@@ -1,0 +1,36 @@
+<?php
+return [
+    //title
+    "pages" => "Halaman",
+    "News" => "Berita",
+    "title" => "Judul",
+    "Tags" => "Tags",
+    "Dashboard" => "Dashboard",
+    "Comment" => "Komentar",
+    "Username" => "Nama Pengguna",
+    //tags
+    "tagNames" => "Nama Tag",
+    //commonly used
+    "add" => "Tambah",
+    "show" => "Tampilkan",
+    "edit" => "Ubah",
+    "save" => "Simpan",
+    "SignOut" => "Keluar",
+    "typeHere" => "Ketik Disini .....",
+    "publishStatus" => "Status Terbit",
+    "published" => "Sudah Terbit",
+    "unpublished" => "Belum Terbit",
+    "addNew" => "Tambah :name Baru",
+    "search" => "Cari",
+    "action" => "Aksi",
+    "success" => "Berhasil",
+    "successMessage" => ":name telah berhasil dihapus!",
+    "delete" => "Hapus :name",
+    "editTitle" => "Ubah :name",
+    "createdAt" => "Dibuat Pada",
+    "publishedAt" => "Diterbitkan Pada",
+    "updatedAt" => "Diperbarui Pada",
+    "areYouSure" => "Apakah kamu yakin mau menghapus item ini ??",
+    "yesDelete" => "Ya, Hapus!",
+    "noCancel" => "Tidak, Batalkan.",
+];

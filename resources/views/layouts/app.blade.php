@@ -40,7 +40,7 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="{{ asset('assets') }}/js/core/popper.min.js"></script>
-    <script src="{{ asset('assets') }}/js/core/bootstrap.min.js"></script>
+    {{-- <script src="{{ asset('assets') }}/js/core/bootstrap.min.js"></script> --}}
     <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="{{ asset('assets') }}/js/plugins/smooth-scrollbar.min.js"></script>
     <script src="{{ asset('assets') }}/js/material-dashboard.min.js?v=3.0.0"></script>

@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire\News;
 
+use App\Http\Livewire\BaseComponent;
 use App\Http\Livewire\Concerns\Column;
+use App\Http\Livewire\Concerns\SwalTrigger;
 use App\Models\News;
 use Illuminate\Database\Eloquent\Builder;
-use App\Http\Livewire\BaseComponent;
-use App\Http\Livewire\Concerns\SwalTrigger;
 
 class NewsIndex extends BaseComponent
 {
@@ -25,9 +25,9 @@ class NewsIndex extends BaseComponent
     public function columns(): array
     {
         return [
-            Column::make('title', 'title'),
-            Column::make('published_at', 'Publish Status')->component('cms.published'),
-            Column::make('tagnames', 'Tag Names')->component('cms.tags')->notSortable(),
+            Column::make('title', __("common.title")),
+            Column::make('published_at', __("common.publishStatus"))->component('cms.published'),
+            Column::make('tagnames', __("common.tagNames"))->component('cms.tags')->notSortable(),
         ];
     }
 
@@ -43,9 +43,9 @@ class NewsIndex extends BaseComponent
         $this->DispactchSwal(
             'swal',
             [
-                'title' => 'Success',
-                'text'  => 'News deleted successfully!',
-                'icon'  => 'success'
+                'title' => __("common.success"),
+                'text' => __("common.successMessage", ['name' => __("common.News")]),
+                'icon' => 'success',
             ]
         );
     }

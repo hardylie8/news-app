@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire\Tags;
 
-use App\Http\Livewire\Concerns\Column;
-use Illuminate\Database\Eloquent\Builder;
 use App\Http\Livewire\BaseComponent;
+use App\Http\Livewire\Concerns\Column;
 use App\Http\Livewire\Concerns\SwalTrigger;
 use App\Models\Tag;
+use Illuminate\Database\Eloquent\Builder;
 
 class TagIndex extends BaseComponent
 {
@@ -25,9 +25,9 @@ class TagIndex extends BaseComponent
     public function columns(): array
     {
         return [
-            Column::make('title', 'title'),
-            Column::make('created_at', 'Created At'),
-            Column::make('updated_at', 'Updated At'),
+            Column::make('title', __("common.title")),
+            Column::make('created_at', __("common.createdAt")),
+            Column::make('updated_at', __("common.updatedAt")),
         ];
     }
 
@@ -44,8 +44,8 @@ class TagIndex extends BaseComponent
             'swal',
             [
                 'title' => 'Success',
-                'text'  => 'Tag deleted successfully!',
-                'icon'  => 'success'
+                'text' => 'Tag deleted successfully!',
+                'icon' => 'success',
             ]
         );
     }

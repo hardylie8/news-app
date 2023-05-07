@@ -5,7 +5,7 @@
             <div class="bg-gradient-primary shadow-primary border-radius-md pt-4 pb-3">
                 <h6 class="text-white mx-3">
                     <strong>
-                        Comment
+                        {{__('common.Comment')}}
                     </strong>
                 </h6>
             </div>
@@ -16,7 +16,7 @@
                 <table class="table ">
                     <thead>
                         <tr>
-                            <th class="text-uppercase text-secondary text-sm text-center font-weight-bolder opacity-7">
+                            <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">
                                 #
                             </th>
                             @foreach ($this->columns() as $column)
@@ -47,14 +47,12 @@
                                     </th>
                                 @else
                                     <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ">
-                                        {{ $column->key }}
+                                        {{ $column->label }}
                                     </th>
                                 @endif
 
                             @endforeach
-                            <th class="text-uppercase text-secondary text-sm text-center font-weight-bolder opacity-7">
-                                Action
-                            </th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -62,9 +60,8 @@
                         @foreach ($this->data() as $key => $row)
                             <tr>
                                 <td>
-                                    <label class="text-xs text-secondary ps-2 mb-0">
+                                    <label class="text-xs text-secondary ps-2">
                                         {{ $this->data()->firstItem() + $key }}
-
                                     </label>
                                 </td>
                                 @foreach ($this->columns() as $column)
@@ -75,21 +72,7 @@
                                         </p>
                                     </td>
                                 @endforeach
-                                <td class="align-middle">
-                                    <a rel="tooltip" class="btn btn-icon p-2 btn-info btn-link"
-                                        href="/news/{{ $row->id }}" data-original-title="" title="">
-                                        <i class="material-icons">visibility</i>
-                                    </a>
-                                    <a rel="tooltip" class="btn btn-icon p-2 btn-success btn-link"
-                                        href="/news/{{ $row->id }}/edit" data-original-title="" title="">
-                                        <i class="material-icons">edit</i>
-                                    </a>
 
-                                    <button type="button" class="btn p-2 btn-icon btn-danger dt-delete btn-link"
-                                        data-original-title="" data-key="{{ $row->getKey() }}" title="">
-                                        <i class="material-icons">delete</i>
-                                    </button>
-                                </td>
                             </tr>
                         @endforeach
 
